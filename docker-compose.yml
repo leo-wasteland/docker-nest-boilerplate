@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+    pgadmin:
+        image: dpage/pgadmin4
+        restart: unless-stopped
+        environment:
+            PGADMIN_DEFAULT_EMAIL: 'pretty@boilerplate.com'
+            PGADMIN_DEFAULT_PASSWORD: root
+        ports:
+            - 16543:80
+        depends_on:
+            - postgres
+        networks:
+            - pretty-nest-boilerplate-network
+
+    postgres:
+        image: postgres
+        ports:
+            - "3500:5432"
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: root
+            POSTGRES_DB: db
+        networks:
+            - pretty-nest-boilerplate-network
+
+networks:
+    pretty-nest-boilerplate-network:
