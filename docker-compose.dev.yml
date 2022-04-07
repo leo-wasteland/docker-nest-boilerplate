@@ -20,7 +20,7 @@ services:
         environment:
             POSTGRES_USER: user
             POSTGRES_PASSWORD: root
-            POSTGRES_DB: db
+            POSTGRES_DB: prettyboilerplate
         networks:
             - pretty-nest-boilerplate-network
 

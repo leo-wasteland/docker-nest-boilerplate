@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 import { CatColor } from 'src/enums/cat-color.enum';
 
-export class CreateCat {
+export class CreateCatDto {
   @ApiProperty()
   id?: number;
 

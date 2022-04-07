@@ -1,7 +1,16 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CatsService } from './cats.service';
-import { CreateCat } from './dto/create-cat.dto';
+import { CreateCatDto } from './dto/create-cat.dto';
+import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Controller('cats')
 @ApiTags('Cats')
@@ -9,7 +18,27 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
-  create(@Body() dto: CreateCat) {
-    return this.catsService.create(dto);
+  create(@Body() createCatDto: CreateCatDto) {
+    return this.catsService.create(createCatDto);
+  }
+
+  @Get()
+  findAll() {
+    return this.catsService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.catsService.findOne(+id);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+    return this.catsService.update(+id, updateCatDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.catsService.remove(+id);
   }
 }
