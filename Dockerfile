@@ -1,13 +1,12 @@
-FROM node:14
+FROM node:17
 
-RUN mkdir -p /var/www/api
+WORKDIR /home/api
 
-WORKDIR /var/www/api
+COPY package.json .
+COPY yarn.lock .
 
-COPY . /var/www/api/
+RUN yarn install
 
-### Start
-RUN npm install
+COPY . .
 
-### End
-CMD ["npm", "install"]
+CMD yarn start:dev
