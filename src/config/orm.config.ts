@@ -1,5 +1,4 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { CatsModule } from 'src/apps/cats/cats.module';
 import * as Models from '../models';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -14,6 +13,6 @@ export const ormConfig: TypeOrmModuleOptions = {
   username: process.env.POSTGRES_USERNAME,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
-  entities: [...Object.keys(Models).map((key) => Models[key]), CatsModule],
+  entities: [...Object.keys(Models).map((key) => Models[key])],
   synchronize: true,
 };

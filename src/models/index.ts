@@ -1,1 +1,1 @@
-export * from './cat.model';
+export * from './example.model';
